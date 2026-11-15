@@ -1,0 +1,29 @@
+[package]
+name = "swiftpdf"
+version = "1.0.0"
+edition = "2021"
+description = "A fast, lightweight PDF reader"
+build = "build.rs"
+
+[dependencies]
+eframe = "0.29"
+pdfium-render = "0.8"
+rfd = "0.15"
+docx-rs = "0.4"
+png = "0.17"
+
+[target.'cfg(windows)'.build-dependencies]
+winresource = "0.1"
+
+# Shown in the file properties of swiftpdf.exe (Windows)
+[package.metadata.winresource]
+ProductName = "SwiftPDF"
+FileDescription = "SwiftPDF - fast, lightweight PDF reader"
+OriginalFilename = "swiftpdf.exe"
+LegalCopyright = "Copyright (c) SwiftPDF"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
